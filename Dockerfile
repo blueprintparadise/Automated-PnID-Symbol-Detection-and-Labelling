@@ -8,7 +8,8 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV GRADIO_SERVER_NAME=0.0.0.0
-
+ENV GRADIO_SERVER_PORT 8080
+ENV COMMANDLINE_ARGS="--no-gradio-queue"
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libopencv-dev \
