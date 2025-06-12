@@ -690,10 +690,11 @@ if __name__ == "__main__":
         logger.info("Launching Gradio app on port 8080...")
         demo.launch(
             server_port=8080,
-            share=True,  # Temporarily disable sharing
+            share=False,
             debug=False,
             show_error=True,
-            quiet=False
+            quiet=False,
+            enable_queue=False
         )
         
     except KeyboardInterrupt:

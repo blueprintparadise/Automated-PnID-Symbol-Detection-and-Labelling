@@ -8,8 +8,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV GRADIO_SERVER_NAME=0.0.0.0
-ENV GRADIO_SERVER_PORT 8080
-ENV COMMANDLINE_ARGS="--no-gradio-queue"
+ENV GRADIO_SERVER_PORT=8080
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libopencv-dev \
@@ -21,15 +20,8 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Create requirements.txt with all necessary dependencies
-RUN echo "torch>=1.9.0" > requirements.txt && \
-    echo "torchvision>=0.10.0" >> requirements.txt && \
-    echo "gradio>=3.0.0" >> requirements.txt && \
-    echo "opencv-python>=4.5.0" >> requirements.txt && \
-    echo "numpy>=1.21.0" >> requirements.txt && \
-    echo "pandas>=1.3.0" >> requirements.txt && \
-    echo "Pillow>=8.3.0" >> requirements.txt && \
-    echo "tqdm>=4.62.0" >> requirements.txt
+# Copy requirements.txt first for better caching
+COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
