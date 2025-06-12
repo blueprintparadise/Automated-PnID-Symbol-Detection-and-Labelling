@@ -693,8 +693,7 @@ if __name__ == "__main__":
             share=False,
             debug=False,
             show_error=True,
-            quiet=False,
-            enable_queue=False
+            quiet=False
         )
         
     except KeyboardInterrupt:
