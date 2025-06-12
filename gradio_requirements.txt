@@ -1,0 +1,10 @@
+gradio
+torch
+torchvision
+opencv-python
+numpy
+pandas
+Pillow
+scikit-image
+tqdm
+matplotlib 
